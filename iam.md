@@ -23,14 +23,20 @@ Roles can be attached to resources or users. The permission to those roles come 
 ![image](https://github.com/user-attachments/assets/79914b67-4a0a-401f-93e3-6b7a68643b0a)
 
 #### Differences Between IAM Policies and IAM Roles
-IAM Policies
+- IAM Policies
+  
 Specifies what actions are allowed or denied  
+
 Attached to IAM users, groups, or roles
+
 Credentials are permanent 
 
-IAM Roles
+- IAM Roles
+  
 Grants temporary access to AWS resources 
-Attached to AWS services or assumed by users 
+
+Attached to AWS services or assumed by users
+
 Temporary credentials generated when assumed 
 
 #### Session policies
