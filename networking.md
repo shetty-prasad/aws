@@ -17,7 +17,7 @@
 - - Ideal for resources that need direct internet connectivity, such as web servers or public applications. Public subnets have a direct route to an Internet Gateway.
 
 - Private Subnets:
-  - - Best suited for resources that do not require exposure to the internet, such as databases or internal applications. Internet-bound traffic in private subnets typically routes via a NAT Gateway.
+ - Best suited for resources that do not require exposure to the internet, such as databases or internal applications. Internet-bound traffic in private subnets typically routes via a NAT Gateway.
 
 - The first four IP addresses in every subnet are reserved:
 - The first address serves as the network address.
