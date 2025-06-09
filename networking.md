@@ -47,4 +47,15 @@
 * Routing Setup: Ensure that the private subnet’s route table directs all outbound traffic to the NAT Gateway.
 * Fully Managed Service: Being a managed service by AWS, NAT Gateways require minimal ongoing management, with AWS handling maintenance and scaling.
 
-  
+#### DNS VPC
+* Automatic DNS Entries: Private IP addresses are automatically mapped to DNS entries.
+* AWS DNS Server Access: The DNS servers can be accessed at the second IP (e.g 10.0.0.2) in the VPC CIDR block or via 169.254.169.253.
+* Enable DNS Hostnames:
+  * By default, only private IP addresses receive a DNS entry. To assign public DNS hostnames to instances with public IP addresses, ensure the "enable DNS hostnames" option is activated during VPC creation. This option is crucial for instances that need to be accessed publicly.
+* Enable DNS Support:
+  * This setting determines whether the VPC supports DNS resolution using Amazon-provided DNS servers. When enabled, DNS queries sent to the AWS DNS servers (either via the second IP in the VPC CIDR block or the special IP 169.254.169.253) will be resolved successfully. Disabling this option prevents DNS queries from reaching these servers.  
+
+#### Elastic IP
+* Elastic IP addresses are static IPv4 addresses allocated to your AWS account.
+* Elastic IPs are tied to specific AWS regions and cannot be transferred across regions.
+* public IP addresses assigned to EC2 instances are dynamic, i.e they change after system restart.
