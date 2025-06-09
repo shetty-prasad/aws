@@ -25,3 +25,26 @@
 - The fourth address is held for future use.
 - Additionally, the last IP address in a subnet (e.g., 192.168.10.255 in a /24 subnet) is reserved as the broadcast address.
 
+#### Route 
+
+* Routing in a VPC is governed by a route table, a collection of routing rules that directs how network traffic should be forwarded.
+* Each rule in this table is referred to as a route.
+* The router inspects the destination IP address of each outbound packet and then matches it against the routes defined in the table.
+* Every VPC is initialized with a default route table, which includes a mandatory local route. This local route ensures that traffic destined for other devices within the same VPC (as defined by the VPC's CIDR block) is routed internally.
+* Multiple subnets can share the same route table when they adhere to identical routing rules but a single subnet cannot be assigned to multiple routes .
+
+#### Internet Gateway
+* By default, subnets in a VPC are created as private. Devices within these subnets cannot access the Internet, and external resources cannot reach them. To convert a subnet into a public subnet, you must attach an Internet Gateway to your VPC.
+* An Internet Gateway is a horizontally scaled, redundant, and highly available component that spans all Availability Zones within a region.
+* A subnet is converted to a public subnet when its route table includes a default route pointing to the Internet Gateway.
+* Each VPC is limited to one Internet Gateway, and an Internet Gateway can be attached to only a single VPC.
+
+#### NAT Gateway
+* NAT Gateways allow instances within private subnets to initiate outbound connections while blocking unsolicited inbound traffic, thereby keeping internal servers shielded from external threats.
+* Essentially, the NAT Gateway allows instances to initiate connections but blocks external entities from starting a conversation with them.
+* Dependency on an Internet Gateway: Even though a NAT Gateway is used, an Internet Gateway is necessary for external connectivity.
+* Deployment on Public Subnets: NAT Gateways are deployed within public subnets and thus receive a public IP address. This setup is essential for routing outbound traffic to the internet.
+* Routing Setup: Ensure that the private subnet’s route table directs all outbound traffic to the NAT Gateway.
+* Fully Managed Service: Being a managed service by AWS, NAT Gateways require minimal ongoing management, with AWS handling maintenance and scaling.
+
+  
