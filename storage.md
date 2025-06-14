@@ -32,3 +32,7 @@
   * Take a snapshot (stored in an S3 bucket in the source region).
   * Copy the snapshot to an S3 bucket in the destination region.
   * Create a new volume from the copied snapshot and attach it to an EC2 instance.
+
+ ![image](https://github.com/user-attachments/assets/504d425d-7394-438f-9d3e-35c3b7e76e6f)
+ 
+
