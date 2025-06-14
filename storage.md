@@ -44,4 +44,20 @@
   * The instance directly accesses a physical drive on that host.
   * Provided the instance remains on the same host, even after a reboot, it retains access to its instance store data.
 
+### Elastic File System (EFS)
 
+* Amazon EFS is one of the two primary file system storage services provided by AWS—the other being Amazon FSx. It supports the Network File System (NFS) protocol, allowing any NFS-dependent application to work seamlessly with the EFS service.
+* It only supports Linux systems for Windows use Amazon FSx.
+* One of the major advantages of EFS is its ability to be mounted on multiple EC2 instances simultaneously. This feature allows efficient data sharing across instances.
+
+#### EFS Storage Classes
+
+* Standard Storage Classes:
+  * EFS Standard
+  * EFS Standard Infrequent Access
+  * These storage classes provide multi-AZ resilience with high durability and availability.
+
+* One Zone Storage Classes:
+  * EFS One Zone
+  * EFS One Zone Infrequent Access
+  * These options help reduce costs by storing data in a single availability zone.
