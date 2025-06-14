@@ -39,8 +39,8 @@
 
 * Instance stores provide temporary storage that is physically attached to the host machine.
 * Unlike EBS volumes—which reside on separate machines and are accessed via protocols like iSCSI—instance stores enable your EC2 instance to access a local physical drive directly on the host.
-*  Their temporary nature means that the stored data is lost if the instance is moved to a different host.
-*  Consider a scenario where multiple EC2 instances run on the same host machine. When an EC2 instance utilizes an instance store:
+* Their temporary nature means that the stored data is lost if the instance is moved to a different host.
+* Consider a scenario where multiple EC2 instances run on the same host machine. When an EC2 instance utilizes an instance store:
   * The instance directly accesses a physical drive on that host.
   * Provided the instance remains on the same host, even after a reboot, it retains access to its instance store data.
 
