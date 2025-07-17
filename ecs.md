@@ -2,6 +2,8 @@
 
 Think of containers as lightweight virtual machines that include only what is needed to run your application.
 
+ECS is a fully managed container orchestration service that facilitates the deployment, scaling, and management of containerized applications.
+
 ![image](https://github.com/user-attachments/assets/e8db92d7-8218-444a-95e1-35890001cf3d)
 
 With ECS, AWS manages the control plane—the "brains" of the operation—while you provide the compute resources.
