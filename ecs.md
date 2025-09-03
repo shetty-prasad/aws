@@ -18,6 +18,7 @@ There are two primary launch options with ECS:
 A cluster is a logical grouping of resources where your containers run. It can include:
 - EC2 instances (if you're using the EC2 launch type)
 - Or just be a logical space (if you're using Fargate)
+- 
 Purpose: It acts as the environment or "home" for your tasks and services. Think of it as the container orchestration arena.
 
 
@@ -26,7 +27,9 @@ A task definition is like a recipe that tells ECS how to run your containers. It
 - CPU and memory requirements
 - Environment variables
 - Networking and logging configs
+  
 Purpose: It defines what to run and how to run it. You can think of it as a manifest that ECS uses to launch containers
 
 A service ensures that a specified number of task instances (based on your task definition) are always running.
+
 Purpose: It provides high availability, auto-recovery, and load balancing. If a task crashes, the service automatically replaces it. It’s ideal for long-running applications like web servers or APIs.
