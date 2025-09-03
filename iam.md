@@ -1,4 +1,4 @@
-### Collection of permissions is called a policy 
+### A policy is a collection of permissions
 
 ![image](https://github.com/user-attachments/assets/dffb4c3e-d13c-4255-9582-ad913b75aebc)
 
