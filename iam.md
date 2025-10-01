@@ -1,3 +1,52 @@
+
+AWS IAM is a web service that helps you securely control access to AWS resources. It allows you to manage who can access (authentication) and what actions they can perform (authorization). IAM is global (not region-specific) and comes at no additional cost.
+
+Core IAM Concepts
+
+Users
+
+* Represent individual identities (e.g., developers, admins).
+* Have long-term credentials: passwords and access keys.
+
+Groups
+
+* Collection of IAM users.
+* Policies attached to groups apply to all users in the group.
+
+Roles
+
+* Temporary security credentials.
+* Used by AWS services, federated users, or applications.
+
+Example: An EC2 instance role grants permissions to applications running on EC2 without hardcoding credentials.
+
+Policies
+
+* JSON documents defining permissions.
+* Types:
+  * Identity-based policies (attached to users, groups, roles).
+  * Resource-based policies (attached to resources like S3 buckets).
+
+Elements of a policy:
+
+* Effect (Allow/Deny)
+* Action (API calls like s3:GetObject)
+* Resource (ARN of resources)
+* Condition (optional fine-grained control)
+
+Federation & Identity Providers
+
+* Enables SSO (Single Sign-On) via SAML, OIDC, or Cognito.
+* External users can access AWS without creating IAM users.
+
+Permissions Boundaries
+
+* Advanced feature to set the maximum permissions an IAM entity can have.
+
+Service Control Policies (SCPs) (part of AWS Organizations)
+
+* Restrict what accounts can do at an organizational level.
+
 ### A policy is a collection of permissions
 
 ![image](https://github.com/user-attachments/assets/dffb4c3e-d13c-4255-9582-ad913b75aebc)
