@@ -92,6 +92,16 @@ Temporary credentials generated when assumed
 
 ![image](https://github.com/user-attachments/assets/8f277108-8d96-4c5d-9271-4ef6b1b43a19)
 
+IAM Best Practices
+
+* Follow least privilege principle (grant minimum required access).
+* Use IAM roles instead of long-term access keys.
+* Rotate access keys regularly if used.
+* Enable MFA (Multi-Factor Authentication).
+* Use IAM Access Analyzer to identify over-permissive policies.
+* Integrate with CloudTrail for auditing.
+* Use AWS SSO / Identity Center for centralized workforce identity management.
+
 
 
 
