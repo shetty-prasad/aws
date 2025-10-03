@@ -103,6 +103,108 @@ IAM Best Practices
 * Use AWS SSO / Identity Center for centralized workforce identity management.
 
 
+  what is the difference between permission boundaries and scp in iam ?
 
+“Permissions boundaries limit what a specific IAM user or role can do, while SCPs limit what anyone in an account can do. Permissions boundaries are for delegated administration, SCPs are for organizational governance. Neither grant permissions; they only restrict.”
 
+  Permissions Boundaries vs. SCPs in AWS IAM
+1. Scope
+
+**Permissions Boundaries**
+
+Applied at the IAM principal level (user or role).
+
+Acts as a maximum permissions guardrail for that entity only.
+
+It limits what that specific user/role can do, even if they have broader policies attached.
+
+**Service Control Policies (SCPs)**
+
+Applied at the AWS Organization level (accounts, OUs).
+
+SCPs define the maximum allowed permissions across entire accounts or OUs.
+
+They don’t grant permissions — they only restrict.
+
+2. Who They Apply To
+
+**Permissions Boundaries** → Only affect IAM users and roles to which they are attached.
+
+**SCPs** → Apply to all IAM entities in an account (users, groups, roles), including the root user.
+
+3. Purpose
+
+**Permissions Boundaries**
+
+Used for delegated administration.
+
+Example: You let a developer create IAM roles, but enforce that the roles can never exceed certain permissions (e.g., cannot attach AdministratorAccess).
+
+Think of it as a fence for a single IAM identity.
+
+**SCPs**
+
+Used for organizational guardrails.
+
+Example: You want to prevent anyone in the "Dev" OU from creating resources outside us-east-1.
+
+Think of it as a fence around an entire account or OU.
+
+4. Evaluation Logic
+
+For both, AWS evaluates permissions as an intersection of:
+
+Identity-based policy AND
+
+Resource-based policy AND
+
+Permissions boundary (if applied) AND
+
+SCP (if in an Org)
+
+So:
+Effective Permission = Identity Policy ∩ Resource Policy ∩ Permission Boundary ∩ SCP
+
+5. Example
+
+**Permissions Boundary Example:**
+
+A developer has a policy with ec2:*.
+
+A permissions boundary says "Action": ["ec2:StartInstances", "ec2:StopInstances"].
+
+Result: Developer can only start/stop EC2, not do all ec2:*.
+
+**SCP Example:**
+
+An account has a policy that denies ec2:TerminateInstances.
+
+Even if a role has AdministratorAccess, it cannot terminate instances anywhere in that account.
+
+6. Key Interview Differentiator
+
+**Permissions Boundaries** = IAM-level max cap for specific users/roles (used for delegation).
+
+**SCPs** = Org-level max cap for all identities in an account (used for governance).
+
+**What’s the difference between IAM Policies, SCPs, and Permissions Boundaries? When to use each?**
+
+Answer (clear contrasts):
+
+Identity-based IAM Policies: Attached to users, groups, or roles. They grant permissions. Use these to define what an individual or role can do.
+
+Resource-based Policies: (e.g., S3 bucket policies) Attached to resources to allow cross-account access or restrict access based on conditions.
+
+Service Control Policies (SCPs): Org-level policies in AWS Organizations that define the maximum permissions accounts can use. SCPs do not grant permissions; they restrict them. Use SCPs for organization-wide guardrails (e.g., forbid ec2:TerminateInstances in prod).
+
+Permissions Boundaries: Applied to an IAM principal to set the maximum permissions that principal can be granted by identity-based policies. They are used to delegate permission creation safely (e.g., allow an admin to create roles but cap what those roles can do).
+When to use:
+
+Use IAM policies to grant day-to-day permissions.
+
+Use SCPs for global guardrails across accounts/OUs.
+
+Use Permissions Boundaries to limit delegated admins or automation that creates IAM principals.
+
+Use Resource policies to authorize principals from other accounts or external identities directly on resources.
 
